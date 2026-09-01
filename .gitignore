@@ -1,0 +1,18 @@
+# Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Ll]ogs/
+[Uu]serSettings/
+*.csproj
+*.sln
+*.slnx
+*.user
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vs/
+.idea/
+.vscode/

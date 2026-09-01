@@ -1,0 +1,173 @@
+{
+  "maxCards": 42,
+  "cards": [
+    {
+      "id": "DM_001",
+      "count": 1
+    },
+    {
+      "id": "DM_002",
+      "count": 1
+    },
+    {
+      "id": "DM_003",
+      "count": 1
+    },
+    {
+      "id": "DM_004",
+      "count": 1
+    },
+    {
+      "id": "DM_005",
+      "count": 1
+    },
+    {
+      "id": "DM_006",
+      "count": 1
+    },
+    {
+      "id": "DM_007",
+      "count": 1
+    },
+    {
+      "id": "DM_008",
+      "count": 1
+    },
+    {
+      "id": "DM_009",
+      "count": 1
+    },
+    {
+      "id": "DM_010",
+      "count": 1
+    },
+    {
+      "id": "DM_011",
+      "count": 1
+    },
+    {
+      "id": "DM_012",
+      "count": 1
+    },
+    {
+      "id": "DM_013",
+      "count": 1
+    },
+    {
+      "id": "DM_014",
+      "count": 1
+    },
+    {
+      "id": "DM_015",
+      "count": 1
+    },
+    {
+      "id": "DM_016",
+      "count": 1
+    },
+    {
+      "id": "DM_017",
+      "count": 1
+    },
+    {
+      "id": "DM_018",
+      "count": 1
+    },
+    {
+      "id": "DM_019",
+      "count": 1
+    },
+    {
+      "id": "DM_021",
+      "count": 1
+    },
+    {
+      "id": "DM_022",
+      "count": 1
+    },
+    {
+      "id": "DM_023",
+      "count": 1
+    },
+    {
+      "id": "DM_024",
+      "count": 1
+    },
+    {
+      "id": "DM_025",
+      "count": 1
+    },
+    {
+      "id": "DM_026",
+      "count": 1
+    },
+    {
+      "id": "DM_027",
+      "count": 1
+    },
+    {
+      "id": "DM_028",
+      "count": 1
+    },
+    {
+      "id": "BASE_033",
+      "count": 1
+    },
+    {
+      "id": "BASE_037",
+      "count": 1
+    },
+    {
+      "id": "BASE_038",
+      "count": 1
+    },
+    {
+      "id": "BASE_039",
+      "count": 1
+    },
+    {
+      "id": "BASE_040",
+      "count": 1
+    },
+    {
+      "id": "OC_020",
+      "count": 1
+    },
+    {
+      "id": "OC_029",
+      "count": 1
+    },
+    {
+      "id": "DM_020",
+      "count": 1
+    },
+    {
+      "id": "DM_029",
+      "count": 1
+    },
+    {
+      "id": "NW_020",
+      "count": 1
+    },
+    {
+      "id": "NW_029",
+      "count": 1
+    },
+    {
+      "id": "BIO_019",
+      "count": 1
+    },
+    {
+      "id": "BIO_020",
+      "count": 1
+    },
+    {
+      "id": "RU_020",
+      "count": 1
+    },
+    {
+      "id": "RU_029",
+      "count": 1
+    }
+  ]
+}
