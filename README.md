@@ -1,7 +1,7 @@
 # 신디게이트: 서울 — 카드 배틀 시스템
 
 > **245장의 카드를 데이터로 운용하는 Unity 카드 배틀 엔진과 전투 UI를 설계·구현했습니다.**<br>
-> 전투 규칙, 이펙트 인터프리터, 적 AI, 전투 UI/UX를 단독 담당한 포트폴리오 스냅샷입니다.
+> 3인 팀에서 카드 전투 영역의 기획과 구현을 단독 담당한 포트폴리오 스냅샷입니다.
 
 [![Unity](https://img.shields.io/badge/Unity-6000.3.4f1-000000?logo=unity)](https://unity.com/)
 [![Effects](https://img.shields.io/badge/Effect_Types_in_Data-114-512BD4)](Assets/Resources/cards.json)
@@ -9,10 +9,11 @@
 [![Tests](https://img.shields.io/badge/Editor_Tests-104-2EA44F)](Assets/Scripts/Cards/Editor)
 
 **담당자** 함대영 · [@HolicKW](https://github.com/HolicKW)<br>
+**담당 범위** 카드 전투 컨셉·시스템 기획 · 전투 엔진·적 AI·UI/UX 구현 · 밸런스 점검<br>
 **기술** Unity 6 · C# · URP · Unity Test Framework(NUnit)<br>
 **개발 기간** 2026.02–2026.06 · 3인 팀(경영 기획 1 · 아트 1 · 카드 전투 기획·구현 1)
 
-[핵심 구현](#핵심-구현) · [아키텍처](#아키텍처) · [문제 해결](#기술적-문제-해결) · [테스트](#테스트와-품질-관리) · [코드 살펴보기](#코드-살펴보기)
+[핵심 구현](#핵심-구현) · [아키텍처](#아키텍처) · [문제 해결](#기술적-문제-해결) · [기획·밸런싱](#기획과-밸런스-검증) · [테스트](#테스트와-품질-관리) · [코드 살펴보기](#코드-살펴보기)
 
 ---
 
@@ -57,6 +58,8 @@
 
 ## 아키텍처
 
+### 카드 실행 경로
+
 ```mermaid
 flowchart TB
     JSON["cards.json<br/>카드 245장"] --> DB[CardDatabase]
@@ -68,8 +71,16 @@ flowchart TB
     INTERPRETER --> DEFERRED[EntityState.deferredActions]
     DEFERRED --> TURN[TurnManager]
     TURN --> INTERPRETER
-    AI[EnemyAI] --> EVAL[CardEvaluator]
-    AI --> ENGINE
+```
+
+### AI와 표현 계층
+
+```mermaid
+flowchart TB
+    PROFILE[EnemyAIProfileSO] --> AI[EnemyAI]
+    EVAL[CardEvaluator] --> AI
+    AI --> ENGINE[BattleEngine]
+    ENGINE --> STATE[EntityState]
     ENGINE --> UI[전투 UI / 로그 / VFX]
     STATE -. 상태 조회 .-> UI
 ```
@@ -227,9 +238,13 @@ VFX는 장식보다 규칙 전달을 우선했습니다. 도박 실패에는 글
 
 ---
 
-## 게임 디자인
+## 기획과 밸런스 검증
 
-전투 규칙과 구현을 함께 담당해, 시스템 제약을 플레이 선택으로 전환했습니다.
+카드 전투의 컨셉과 규칙을 먼저 기획하고, 실제 전투 시스템과 카드 데이터로 구현한 뒤
+별도 밸런스 도구로 반복 전투 결과를 점검했습니다. 기획과 구현을 함께 담당해 시스템 제약을 플레이 선택으로
+전환하고, 구현 가능한 규칙인지 코드 단계에서 빠르게 검증했습니다.
+
+### 컨셉을 플레이 규칙으로 구현
 
 | 카드 팩 | 핵심 메커니즘 | 플레이 감각 |
 |---|---|---|
@@ -245,12 +260,23 @@ VFX는 장식보다 규칙 전달을 우선했습니다. 도박 실패에는 글
 오버클럭의 자해, 도박의 실패, 해체의 카드 소모처럼 강한 이득에는 명확한 비용을 붙였습니다.
 매 턴 “지금 위험을 감수할 것인가”를 판단하게 만드는 것이 전투 설계의 중심입니다.
 
+### 구현 후 밸런스 점검
+
+구현된 카드와 전투 규칙은 별도 브라우저 도구인
+[`HolicKW/card-simulator`](https://github.com/HolicKW/card-simulator)에서 AI 반복 전투로 점검했습니다.
+AI가 덱을 구성해 PvE 또는 AI 대 AI 미러 매치를 진행하고, 카드별 승률·사용률·학습 가중치와 S–F 등급을
+비교하도록 구성했습니다. 이 결과는 밸런스를 자동 확정하는 값이 아니라, 과도하게 강하거나 약한 카드와
+팩 간 편차를 찾아 카드 수치와 비용을 다시 검토하는 근거로 사용했습니다.
+
 ---
 
 ## 테스트와 품질 관리
 
 Unity Test Framework(NUnit) 기반 **에디터 모드 단위 테스트 104개**를 작성했습니다.
 커버리지 숫자보다 실제 결함 위험이 높은 규칙 경계에 집중했습니다.
+
+> 여기서 테스트는 Unity Editor에서 전투 로직의 기대 결과를 자동 검증하는 코드 단위 테스트입니다.
+> 카드 밸런스 평가는 위의 반복 전투 시뮬레이션과 구분했습니다.
 
 | 테스트 영역 | 케이스 | 검증 대상 |
 |---|---:|---|
