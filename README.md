@@ -10,13 +10,13 @@
 
 **담당자** 함대영 · [@HolicKW](https://github.com/HolicKW)<br>
 **기술** Unity 6 · C# · URP · Unity Test Framework(NUnit)<br>
-**개발 기간** 2026.02–2026.06 · 4인 팀(전투 1 · 도시 경영 2 · 데이터·리서치 1)
+**개발 기간** 2026.02–2026.06 · 3인 팀(경영 기획 1 · 아트 1 · 카드 전투 기획·구현 1)
 
 [핵심 구현](#핵심-구현) · [아키텍처](#아키텍처) · [문제 해결](#기술적-문제-해결) · [테스트](#테스트와-품질-관리) · [코드 살펴보기](#코드-살펴보기)
 
 ---
 
-## 30초 요약
+## 구현 내용 요약
 
 | 규모 | 설계 | 품질 |
 |---|---|---|
@@ -58,7 +58,7 @@
 ## 아키텍처
 
 ```mermaid
-flowchart LR
+flowchart TB
     JSON["cards.json<br/>카드 245장"] --> DB[CardDatabase]
     DB --> DATA[CardData / CardEffect]
     DATA --> ENGINE[BattleEngine.PlayCard]
@@ -335,15 +335,6 @@ Assets/
 
 ---
 
-## 저장소 및 기여 고지
+## 원본 저장소
 
-원본 프로젝트는 4인 팀 저작물입니다. 원본 팀 저장소의 `git blame` 기준 99–100%의 줄이 제 커밋으로
-귀속되는 파일만 선별했으며, 아래 3개 파일에 표시한 팀원 수정이 남아 있습니다.
-
-| 파일 | 팀원 기여 |
-|---|---|
-| [`BattleInitializer.cs`](Assets/Scripts/Cards/BattleInitializer.cs) | kimgyeran 9줄 |
-| [`CardData.cs`](Assets/Scripts/CardData.cs) | jjh8998 8줄 |
-| [`BattleSceneData.cs`](Assets/Scripts/BattleSceneData.cs) | jjh8998 1줄 |
-
-원본 팀 저장소: [jjh8998/NewWorld](https://github.com/jjh8998/NewWorld)
+공개 미러: [HolicKW/NewWorld](https://github.com/HolicKW/NewWorld)
