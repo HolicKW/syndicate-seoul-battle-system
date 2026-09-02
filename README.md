@@ -5,6 +5,8 @@
 
 도시 경영과 카드 전투를 결합한 팀 프로젝트의 전투 시스템입니다.
 
+**[게임 다운로드 (Google Drive)](https://drive.google.com/drive/folders/1G7LdRDg02FU4Szg6Tx1DRVeOm7Zii8Cy?hl=ko)**
+
 [![Unity](https://img.shields.io/badge/Unity-6000.3.4f1-000000?logo=unity)](https://unity.com/)
 [![Cards](https://img.shields.io/badge/Cards-245-00B8A9)](Assets/Resources/cards.json)
 [![Effects](https://img.shields.io/badge/Effect_Types-114-512BD4)](Assets/Resources/cards.json)
